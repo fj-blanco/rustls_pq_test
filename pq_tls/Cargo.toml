@@ -1,0 +1,26 @@
+[package]
+name = "pq_tls"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "server"
+path = "src/tlsserver-mio.rs"
+
+[[bin]]
+name = "client"
+path = "src/tlsclient-mio.rs"
+
+[dependencies]
+rustls = { path = "../rustls/rustls", features = ["logging"] }
+rustls-post-quantum = { path = "../rustls/rustls-post-quantum" }
+mio = { version = "0.8", features = ["net", "os-poll"] }
+pki-types = { package = "rustls-pki-types", version = "1", features = ["std"] }
+serde = "1.0"
+serde_derive = "1.0"
+docopt = "1.1.0"
+log = "0.4.4"
+clap = { version = "4", features = ["derive"] }
+env_logger = "0.10"
+rustls-pemfile = "2"
+webpki-roots = "0.26"
